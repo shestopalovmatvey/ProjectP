@@ -1,13 +1,11 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { useTelegramWebApp } from "./hooks";
+import reactLogo from "@assets/react.svg";
+import viteLogo from "@assets/vite.svg";
 
-function App() {
+export const MainPage = () => {
   const [count, setCount] = useState(0);
-  const tgApp = useTelegramWebApp();
-  console.log("tgApp", tgApp);
+  //   const tgApp = useTelegramWebApp();
+
   return (
     <>
       <div>
@@ -32,6 +30,4 @@ function App() {
       </p>
     </>
   );
-}
-
-export default App;
+};

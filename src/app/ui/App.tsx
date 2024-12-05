@@ -1,5 +1,4 @@
-import { AppRouter } from "@app/providers/RouteProvider";
-import "@assets/styles/App.css";
+import { AppRouter } from "../providers/RouteProvider";
 
 export const App = () => {
   return <AppRouter />;

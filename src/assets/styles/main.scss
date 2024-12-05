@@ -1,0 +1,36 @@
+@use "reset";
+@use "variables";
+
+@font-face {
+  font-family: "UNCAGE Bold";
+  src: url("../fonts/UNCAGE-Bold.ttf");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../fonts/SFPRODISPLAYMEDIUM.OTF");
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../fonts/SFPRODISPLAYREGULAR.OTF");
+  font-style: normal;
+  font-weight: 400;
+}
+
+html,
+body,
+#root {
+  height: 100vh;
+  background-color: var(--color-bg-primary);
+}
+
+html,
+body,
+#root {
+  overflow: hidden !important;
+}

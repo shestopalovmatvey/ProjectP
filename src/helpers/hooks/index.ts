@@ -1,1 +1,1 @@
-export { useTelegramWebApp } from "./hooks";
+export { useTelegramWebApp } from "./api/hooks";

@@ -1,9 +1,16 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), svgr()],
+  server: {
+    watch: {
+      usePolling: true,
+      interval: 100,
+    },
+  },
   resolve: {
     alias: {
       "@pages": path.resolve(__dirname, "./src/pages"),
@@ -11,6 +18,7 @@ export default defineConfig({
       "@shared": path.resolve(__dirname, "./src/shared"),
       "@app": path.resolve(__dirname, "./src/app"),
       "@assets": path.resolve(__dirname, "./src/assets"),
+      "@widgets": path.resolve(__dirname, "./src/widgets"),
     },
   },
 });

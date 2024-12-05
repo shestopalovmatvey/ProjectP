@@ -1,0 +1,30 @@
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  font-family: "SF Pro Display";
+  color: var(--color-txt-disable);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.02px;
+  text-align: center;
+  transition: color 2s ease;
+
+  svg {
+    path {
+      fill: var(--color-txt-disable);
+    }
+  }
+}
+
+.active {
+  color: #fff;
+  svg {
+    path {
+      fill: var(--color-txt-active);
+    }
+  }
+}

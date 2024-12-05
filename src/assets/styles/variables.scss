@@ -1,0 +1,11 @@
+// Цвета
+:root {
+  --color-txt-active: #ffffff;
+  --color-txt-disable: #8c8c8c;
+  --color-bg-secondary: #24232d;
+  --color-bg-primary: #161719;
+}
+
+// Сохраняем SCSS-переменные
+$color-bg-secondary: #24232d !default;
+$color-bg-primary: #161719 !default;

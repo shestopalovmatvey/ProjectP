@@ -24,7 +24,7 @@ export const MainPage = () => {
         }}
       >
         <For each={arr}>
-          {(item, index) => (
+          {(_, index) => (
             <div>
               <Image
                 key={index}

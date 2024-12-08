@@ -1,0 +1,24 @@
+.Main-page {
+  height: calc(100% - 60px);
+  padding: 15px;
+}
+
+.List-container {
+  height: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 2px solid var(--color-bg-secondary);
+  border-bottom: none;
+  border-style: solid;
+  border-color: #24232d;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+
+  &::-webkit-scrollbar-track {
+    margin: 10px;
+  }
+}

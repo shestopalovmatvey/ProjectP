@@ -1,7 +1,12 @@
 import React from "react";
-import { RouterProvider } from "react-router";
-import { router } from "../../../routes/routes";
+import { Route, Routes } from "react-router";
+import { MainPage, ProfilePage } from "@/pages";
 
 export const AppRouter: React.FC = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
+    </Routes>
+  );
 };

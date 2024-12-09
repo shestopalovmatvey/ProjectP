@@ -11,17 +11,7 @@ export const MainPage = () => {
       <Stack
         className={styles["List-container"]}
         scrollBehavior={"smooth"}
-        css={{
-          "&::-webkit-scrollbar": {
-            width: "4px",
-          },
-          "&::-webkit-scrollbar-track": {
-            width: "6px",
-          },
-          "&::-webkit-scrollbar-thumb": {
-            borderRadius: "24px",
-          },
-        }}
+        gap={"3"}
       >
         <For each={arr}>
           {(_, index) => (

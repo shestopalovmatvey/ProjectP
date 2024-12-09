@@ -17,8 +17,27 @@
   border-color: #24232d;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
+  scroll-margin: 20px;
+
+  img {
+    width: 100%;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
 
   &::-webkit-scrollbar-track {
-    margin: 10px;
+    border-radius: 12px;
+    margin-top: 30px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #4f5155;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
 }

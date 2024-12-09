@@ -3,10 +3,10 @@ import Home from "@assets/images/home.svg?react";
 import Profile from "@assets/images/profile.svg?react";
 import Plus from "@assets/images/plus.svg?react";
 import styles from "./Tabbar.module.scss";
-import { IconButton } from "@/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/helpers/hooks";
 import { activeModalIdSelector, commonActions } from "@/store/common";
 import { ModalId } from "@/helpers/enums";
+import { IconButton } from "@/shared";
 
 export const Tabbar: FC = () => {
   const activeModalId = useAppSelector(activeModalIdSelector);

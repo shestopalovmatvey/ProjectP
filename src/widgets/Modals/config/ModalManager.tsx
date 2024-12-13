@@ -4,7 +4,7 @@ import { activeModalIdSelector, commonActions } from "@/store/common";
 import { AddContentModal } from "../ui/AddContentModal/AddContentModal";
 import { CSSTransition } from "react-transition-group";
 import styles from "./ModalManager.module.scss";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export const ModalManager = () => {
   const activeModalId = useAppSelector(activeModalIdSelector);
@@ -14,6 +14,18 @@ export const ModalManager = () => {
   const onClose = () => {
     dispatch(commonActions.closeModal());
   };
+
+  useEffect(() => {
+    if (activeModalId !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeModalId]);
 
   return (
     <>

@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export const App = () => {
   useEffect(() => {
     window.Telegram.WebApp.expand();
-  });
+  }, []);
   return (
     <>
       <BrowserRouter>

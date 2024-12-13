@@ -1,6 +1,6 @@
 .Tab-bar {
   position: fixed;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   z-index: 2000;
   width: 100%;
@@ -29,7 +29,7 @@
   box-shadow: 0px -4.2px 5.24px 0px #3b3a48;
 
   svg {
-    transition: transform 0.3s ease-out;
+    transition: transform 0.25s ease-out;
   }
 }
 

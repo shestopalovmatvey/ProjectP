@@ -1,30 +1,21 @@
-import { FC, useState, useEffect } from "react";
+import { FC } from "react";
 import styles from "./AddContentModal.module.scss";
 
 interface AddContentModalProps {
   onClose: () => void;
+  nodeRef: React.RefObject<HTMLDivElement>;
 }
 
-export const AddContentModal: FC<AddContentModalProps> = ({ onClose }) => {
-  const [isClosing, setIsClosing] = useState(false);
-
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(onClose, 300);
-  };
-
-  useEffect(() => {
-    return () => setIsClosing(false);
-  }, []);
-
+export const AddContentModal: FC<AddContentModalProps> = ({
+  onClose,
+  nodeRef,
+}) => {
   return (
-    <div
-      className={`${styles.Overlay} ${isClosing ? styles.fadeOut : ""}`}
-      onClick={handleClose}
-    >
+    <div className={styles.Overlay} onClick={onClose}>
       <div
-        className={`${styles.Modal} ${isClosing ? styles.slideDown : ""}`}
+        className={styles.Modal}
         onClick={(e) => e.stopPropagation()}
+        ref={nodeRef}
       >
         <div className={styles.Content}>
           <h2>Добавить контент</h2>

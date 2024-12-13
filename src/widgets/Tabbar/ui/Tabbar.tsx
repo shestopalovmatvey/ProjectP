@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import Home from "@assets/images/home.svg?react";
 import Profile from "@assets/images/profile.svg?react";
 import Plus from "@assets/images/plus.svg?react";
@@ -11,14 +11,9 @@ import { IconButton } from "@/shared";
 export const Tabbar: FC = () => {
   const activeModalId = useAppSelector(activeModalIdSelector);
   const dispatch = useAppDispatch();
-  const [isClosing, setIsClosing] = useState(false);
 
   const toggleModal = () => {
     if (activeModalId === ModalId.ADD_CONTENT_MODAL) {
-      setIsClosing(true);
-      setTimeout(() => {
-        setIsClosing(false);
-      }, 300);
       dispatch(commonActions.closeModal());
     } else {
       dispatch(commonActions.openModal({ id: ModalId.ADD_CONTENT_MODAL }));
@@ -32,9 +27,7 @@ export const Tabbar: FC = () => {
       </IconButton>
       <button
         className={`${styles.Plus} ${
-          activeModalId === ModalId.ADD_CONTENT_MODAL && !isClosing
-            ? styles.PlusActive
-            : ""
+          activeModalId === ModalId.ADD_CONTENT_MODAL ? styles.PlusActive : ""
         }`}
         onClick={toggleModal}
       >

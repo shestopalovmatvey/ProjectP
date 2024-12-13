@@ -7,7 +7,6 @@ import { Categories } from "@/helpers/enums";
 
 export const MainPage = () => {
   const navigate = useNavigate();
-  //   const tgApp = useTelegramWebApp();
   const categories = Object.values(Categories);
   const handleCategoryClick = (category: string) => {
     navigate(`/${category}`);

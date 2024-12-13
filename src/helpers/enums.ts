@@ -19,3 +19,10 @@ export const CategoryTitles: Record<Categories, string> = {
   [Categories.GAMES]: "Игры",
   [Categories.CHANEL]: "Каналы",
 };
+
+export enum LoadingState {
+  INITIAL,
+  LOADING,
+  LOADED,
+  FAILED,
+}

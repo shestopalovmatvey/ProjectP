@@ -19,7 +19,7 @@ export const ModalManager = () => {
     <>
       <CSSTransition
         in={activeModalId === ModalId.ADD_CONTENT_MODAL}
-        timeout={300}
+        timeout={400}
         classNames={{
           enter: styles.enter,
           enterActive: styles.enterActive,

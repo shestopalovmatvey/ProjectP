@@ -32,6 +32,21 @@ body,
 html,
 body,
 #root {
+  overflow: hidden !important;
   --chakra-colors-color-palette-fg: #fff;
   --chakra-colors-fg-muted: #8c8c8c;
+}
+
+.AppLayout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; // занимаем весь экран
+  overflow: hidden; // чтобы внешний скролл не вмешивался
+}
+
+.ContentWrapper {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; // плавный скролл на iOS
+  padding-bottom: 60px; // чтобы контент не уходил под таб бар, если таббар фиксированный
 }

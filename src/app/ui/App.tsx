@@ -7,15 +7,19 @@ import { useEffect } from "react";
 export const App = () => {
   useEffect(() => {
     window.Telegram.WebApp.expand();
+    window.Telegram.WebApp.isClosingConfirmationEnabled = true;
   }, []);
+
   return (
-    <>
+    <div className="AppLayout">
       <BrowserRouter>
-        <AppRouter />
+        <div className="ContentWrapper">
+          <AppRouter />
+        </div>
         <Tabbar />
         <ModalManager />
       </BrowserRouter>
-    </>
+    </div>
   );
 };
 

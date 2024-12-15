@@ -7,7 +7,7 @@ export interface CommonSchema {
 }
 
 export interface ModalParams {
-  [ModalId.EXAMPLE_MODAL]: {
-    tabs: string;
+  [ModalId.ADD_CONTENT_MODAL]: {
+    tabs?: string;
   };
 }

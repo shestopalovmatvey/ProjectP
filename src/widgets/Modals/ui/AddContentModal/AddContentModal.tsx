@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styles from "./AddContentModal.module.scss";
+import { ButtonMain } from "@/shared";
 
 interface AddContentModalProps {
   onClose: () => void;
@@ -18,8 +19,10 @@ export const AddContentModal: FC<AddContentModalProps> = ({
         ref={nodeRef}
       >
         <div className={styles.Content}>
-          <h2>Добавить контент</h2>
-          <p>Добавьте сюда любой контент</p>
+          <h2 className={styles["Content__title"]}>Добавление контента</h2>
+          <ButtonMain variant={"subtle"}>
+            <span className={styles["Content__button-title"]}>Добавить</span>
+          </ButtonMain>
         </div>
       </div>
     </div>

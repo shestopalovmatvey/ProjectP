@@ -25,3 +25,10 @@ export enum LoadingState {
   LOADED,
   FAILED,
 }
+
+export enum SortCategory {
+  DATE_ADDED = "DATE_ADDED",
+  ALPHABET_ASC = "ALPHABET_ASC",
+  RATING = "RATING",
+  RELEASE_DATE = "RELEASE_DATE",
+}

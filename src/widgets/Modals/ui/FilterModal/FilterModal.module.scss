@@ -58,3 +58,15 @@
     line-height: 24px;
   }
 }
+
+.Radio-Container {
+  font-family: "SF Pro Display";
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15.51px;
+  color: var(--color-txt-disable);
+
+  .active {
+    color: var(--color-bg-primary);
+  }
+}

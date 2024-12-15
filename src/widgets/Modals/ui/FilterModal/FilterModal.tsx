@@ -6,6 +6,7 @@ import { useAppDispatch } from "@/helpers/hooks";
 import { commonActions } from "@/store/common";
 import { Radio, RadioGroup } from "@/components/ui/radio";
 import { Stack } from "@chakra-ui/react";
+import { SortCategory } from "@/helpers/enums";
 
 interface FilterModalProps {
   onClose: () => void;
@@ -13,7 +14,7 @@ interface FilterModalProps {
 }
 
 export const FilterModal: FC<FilterModalProps> = ({ onClose, nodeRef }) => {
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState<SortCategory>(SortCategory.DATE_ADDED);
   const dispatch = useAppDispatch();
 
   const onSortClick = () => {
@@ -40,13 +41,39 @@ export const FilterModal: FC<FilterModalProps> = ({ onClose, nodeRef }) => {
             value={value}
             variant={"solid"}
             colorPalette={"#4F5155"}
-            onValueChange={(e) => setValue(e.value)}
+            onValueChange={(e) => setValue(e.value as SortCategory)}
           >
-            <Stack gap="12px">
-              <Radio value="1">По дате добавления</Radio>
-              <Radio value="2">По алфавиту А-Я</Radio>
-              <Radio value="3">По рейтингу</Radio>
-              <Radio value="4">По дате выхода </Radio>
+            <Stack gap="12px" className={styles["Radio-Container"]}>
+              <Radio
+                value={SortCategory.DATE_ADDED}
+                className={
+                  value === SortCategory.DATE_ADDED ? styles.active : ""
+                }
+              >
+                По дате добавления
+              </Radio>
+              <Radio
+                value={SortCategory.ALPHABET_ASC}
+                className={
+                  value === SortCategory.ALPHABET_ASC ? styles.active : ""
+                }
+              >
+                По алфавиту А-Я
+              </Radio>
+              <Radio
+                value={SortCategory.RATING}
+                className={value === SortCategory.RATING ? styles.active : ""}
+              >
+                По рейтингу
+              </Radio>
+              <Radio
+                value={SortCategory.RELEASE_DATE}
+                className={
+                  value === SortCategory.RELEASE_DATE ? styles.active : ""
+                }
+              >
+                По дате выхода
+              </Radio>
             </Stack>
           </RadioGroup>
         </div>

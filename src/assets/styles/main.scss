@@ -41,13 +41,20 @@ body,
 .AppLayout {
   display: flex;
   flex-direction: column;
-  height: 100vh; // занимаем весь экран
-  overflow: hidden; // чтобы внешний скролл не вмешивался
+  height: 100vh;
+  overflow: hidden;
 }
 
 .ContentWrapper {
   flex: 1;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch; // плавный скролл на iOS
-  padding-bottom: 60px; // чтобы контент не уходил под таб бар, если таббар фиксированный
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 60px;
+}
+
+.ContentWrapper::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
 }

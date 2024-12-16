@@ -3,12 +3,15 @@ import { AppRouter } from "../providers/RouteProvider";
 import { BrowserRouter } from "react-router";
 import { ModalManager } from "@/widgets/Modals";
 import { useEffect } from "react";
+import { useAppDispatch } from "@/helpers/hooks";
+import { initializeApp } from "@/store/init";
 
 export const App = () => {
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    window.Telegram.WebApp.expand();
-    window.Telegram.WebApp.isClosingConfirmationEnabled = true;
-  }, []);
+    dispatch(initializeApp());
+  }, [dispatch]);
 
   return (
     <div className="AppLayout">

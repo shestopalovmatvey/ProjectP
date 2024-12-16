@@ -42,3 +42,53 @@
     line-height: 24px;
   }
 }
+
+.enter {
+  .Overlay {
+    opacity: 0;
+  }
+  .Modal {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+.enterActive {
+  .Overlay {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  .Modal {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+}
+
+.exit {
+  .Overlay {
+    opacity: 0.8;
+  }
+  .Modal {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.exitActive {
+  .Overlay,
+  .Modal {
+    transition: all 0.4s ease;
+  }
+
+  .Overlay {
+    opacity: 0;
+  }
+
+  .Modal {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}

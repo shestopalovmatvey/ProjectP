@@ -8,9 +8,11 @@ import { Categories } from "@/helpers/enums";
 export const MainPage = () => {
   const navigate = useNavigate();
   const categories = Object.values(Categories);
+
   const handleCategoryClick = (category: string) => {
     navigate(`/${category}`);
   };
+
   return (
     <div className={styles["Main-page"]}>
       <Stack

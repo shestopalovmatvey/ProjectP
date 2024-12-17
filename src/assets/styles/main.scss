@@ -36,6 +36,8 @@ body,
   --chakra-colors-color-palette-fg: #fff;
   --chakra-colors-fg-muted: #8c8c8c;
   --chakra-colors-color-palette-solid: 4F5155;
+  --chakra-colors-gray-contrast: var(--color-bg-secondary);
+  --chakra-colors-gray-solid: var(--color-bg-secondary);
 }
 
 .AppLayout {
@@ -43,6 +45,7 @@ body,
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  color: var(--color-txt-active);
 }
 
 .ContentWrapper {

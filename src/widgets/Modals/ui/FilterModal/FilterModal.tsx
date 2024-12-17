@@ -50,7 +50,7 @@ export const FilterModal: FC<FilterModalProps> = ({ onClose, isOpen }) => {
             <RadioGroup
               value={value}
               variant={"solid"}
-              colorPalette={"#4F5155"}
+              colorPalette={"gray"}
               onValueChange={(e) => setValue(e.value as SortCategory)}
             >
               <Stack gap="12px" className={styles["Radio-Container"]}>

@@ -10,6 +10,8 @@ import {
   SelectValueText,
 } from "@/components/ui/select";
 import { createListCollection } from "@chakra-ui/react";
+import { Categories, CategoryTitles } from "@/helpers/enums";
+
 interface AddContentModalProps {
   onClose: () => void;
   isOpen: boolean;
@@ -21,12 +23,13 @@ export const AddContentModal: FC<AddContentModalProps> = ({
 }) => {
   const nodeRef = useRef(null);
 
-  const frameworks = createListCollection({
+  const categories = createListCollection({
     items: [
-      { label: "React.js", value: "react" },
-      { label: "Vue.js", value: "vue" },
-      { label: "Angular", value: "angular" },
-      { label: "Svelte", value: "svelte" },
+      { label: CategoryTitles.films, value: Categories.FILMS },
+      { label: CategoryTitles.books, value: Categories.BOOKS },
+      { label: CategoryTitles.musics, value: Categories.MUSICS },
+      { label: CategoryTitles.games, value: Categories.GAMES },
+      { label: CategoryTitles.chanel, value: Categories.CHANEL },
     ],
   });
 
@@ -55,7 +58,11 @@ export const AddContentModal: FC<AddContentModalProps> = ({
         <div className={styles.Modal}>
           <div className={styles.Content}>
             <h2 className={styles["Content__title"]}>Добавление контента</h2>
-            <SelectRoot collection={frameworks}>
+            <SelectRoot
+              collection={categories}
+              closeOnSelect
+              onValueChange={(details) => console.log("details", details)}
+            >
               <SelectTrigger
                 clearable
                 bg={"#F2F2F7"}
@@ -75,8 +82,13 @@ export const AddContentModal: FC<AddContentModalProps> = ({
                 padding={"10px"}
                 borderRadius={"8px"}
               >
-                {frameworks.items.map((movie) => (
-                  <SelectItem item={movie} key={movie.value} padding={"8px"}>
+                {categories.items.map((movie) => (
+                  <SelectItem
+                    item={movie}
+                    key={movie.value}
+                    padding={"8px"}
+                    className={styles.SelectOption}
+                  >
                     {movie.label}
                   </SelectItem>
                 ))}

@@ -21,6 +21,7 @@ export const initializeApp = createAsyncThunk(
 
     window.Telegram.WebApp.expand();
     window.Telegram.WebApp.isClosingConfirmationEnabled = true;
+    window.Telegram.WebApp.themeParams.header_bg_color = "#24232D";
 
     return {
       id: user?.id,

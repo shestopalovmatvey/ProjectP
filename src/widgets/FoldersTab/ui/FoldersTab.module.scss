@@ -1,6 +1,6 @@
 .FoldersList {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 26px;
+  justify-content: center;
 }

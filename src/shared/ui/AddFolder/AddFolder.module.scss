@@ -1,0 +1,23 @@
+.AddFolder {
+  flex-basis: 46%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .Content {
+    width: 100%;
+    height: 212px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #24232d;
+    border-radius: 9px;
+  }
+
+  p {
+    font-family: "SF Pro Display";
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+}

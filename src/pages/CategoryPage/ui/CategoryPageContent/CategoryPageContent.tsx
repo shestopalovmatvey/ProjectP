@@ -1,4 +1,5 @@
 import { Categories, CategoryTitles } from "@/helpers/enums";
+import { FoldersTab } from "@/widgets/FoldersTab";
 import { Tabs } from "@chakra-ui/react";
 import { useParams } from "react-router";
 
@@ -44,7 +45,9 @@ export const CategoryPageContent = () => {
       <Tabs.Content value="allItemsInCategory">
         {CategoryTitles[category as Categories]}
       </Tabs.Content>
-      <Tabs.Content value="folders">Папки</Tabs.Content>
+      <Tabs.Content value="folders">
+        <FoldersTab />
+      </Tabs.Content>
     </Tabs.Root>
   );
 };

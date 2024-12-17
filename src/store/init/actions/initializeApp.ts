@@ -19,9 +19,9 @@ export const initializeApp = createAsyncThunk(
     //   return rejectWithValue("Check access failed");
     // }
 
+    window.Telegram.WebApp.setHeaderColor("#24232D");
     window.Telegram.WebApp.expand();
     window.Telegram.WebApp.isClosingConfirmationEnabled = true;
-    window.Telegram.WebApp.themeParams.header_bg_color = "#24232D";
 
     return {
       id: user?.id,

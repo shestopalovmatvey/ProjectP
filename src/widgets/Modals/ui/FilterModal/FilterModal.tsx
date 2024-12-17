@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import styles from "./FilterModal.module.scss";
 import IconClose from "@assets/images/close.svg?react";
 import IconSort from "@assets/images/sort.svg?react";
@@ -15,9 +15,27 @@ interface FilterModalProps {
 }
 
 export const FilterModal: FC<FilterModalProps> = ({ onClose, isOpen }) => {
-  const nodeRef = useRef(null);
+  const nodeRef = useRef<HTMLDivElement>(null);
   const [value, setValue] = useState<SortCategory>(SortCategory.DATE_ADDED);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (nodeRef.current && !nodeRef.current.contains(e.target as Node)) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.body.style.pointerEvents = "none";
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.body.style.pointerEvents = "auto";
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, onClose]);
 
   const onSortClick = () => {
     dispatch(commonActions.closeModal());
@@ -32,11 +50,10 @@ export const FilterModal: FC<FilterModalProps> = ({ onClose, isOpen }) => {
         exit: styles.exit,
         exitActive: styles.exitActive,
       }}
-      nodeRef={nodeRef}
       unmountOnExit
     >
-      <div className={styles.Overlay} onClick={onClose} ref={nodeRef}>
-        <div className={styles.Modal} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.Overlay}>
+        <div className={styles.Modal} ref={nodeRef}>
           <div className={styles.Content}>
             <div className={styles["Content-header"]}>
               <button onClick={onSortClick} className={styles.ButtonSvg}>

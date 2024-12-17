@@ -4,22 +4,24 @@ import type { CollectionItem } from "@chakra-ui/react";
 import { Select as ChakraSelect, Portal } from "@chakra-ui/react";
 import { CloseButton } from "./close-button";
 import * as React from "react";
+import SelectArrow from "@assets/images/selectArrow.svg?react";
 
 interface SelectTriggerProps extends ChakraSelect.ControlProps {
   clearable?: boolean;
+  classes?: string;
 }
 
 export const SelectTrigger = React.forwardRef<
   HTMLButtonElement,
   SelectTriggerProps
 >(function SelectTrigger(props, ref) {
-  const { children, clearable, ...rest } = props;
+  const { children, clearable, classes, ...rest } = props;
   return (
     <ChakraSelect.Control {...rest}>
       <ChakraSelect.Trigger ref={ref}>{children}</ChakraSelect.Trigger>
       <ChakraSelect.IndicatorGroup>
         {clearable && <SelectClearTrigger />}
-        <ChakraSelect.Indicator />
+        <SelectArrow width={20} height={20} className={classes} />
       </ChakraSelect.IndicatorGroup>
     </ChakraSelect.Control>
   );

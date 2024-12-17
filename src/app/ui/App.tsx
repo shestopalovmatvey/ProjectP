@@ -1,10 +1,10 @@
-import { Tabbar } from "@/widgets/Tabbar/ui/Tabbar";
 import { AppRouter } from "../providers/RouteProvider";
 import { BrowserRouter } from "react-router";
 import { ModalManager } from "@/widgets/Modals";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/helpers/hooks";
 import { initializeApp } from "@/store/init";
+import { Tabbar } from "@/widgets/Tabbar";
 
 export const App = () => {
   const dispatch = useAppDispatch();

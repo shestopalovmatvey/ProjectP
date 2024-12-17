@@ -30,6 +30,14 @@ export const AddContentModal: FC<AddContentModalProps> = ({
     ],
   });
 
+  const onCloseModal = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
     <CSSTransition
       in={isOpen}
@@ -43,17 +51,32 @@ export const AddContentModal: FC<AddContentModalProps> = ({
       nodeRef={nodeRef}
       unmountOnExit
     >
-      <div className={styles.Overlay} onClick={onClose} ref={nodeRef}>
-        <div className={styles.Modal} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.Overlay} onClick={onCloseModal} ref={nodeRef}>
+        <div className={styles.Modal}>
           <div className={styles.Content}>
             <h2 className={styles["Content__title"]}>Добавление контента</h2>
-            <SelectRoot collection={frameworks} size="sm" width="320px">
-              <SelectTrigger clearable>
-                <SelectValueText placeholder="Категория" />
+            <SelectRoot collection={frameworks}>
+              <SelectTrigger
+                clearable
+                bg={"#F2F2F7"}
+                borderRadius={"8px"}
+                className={styles.Select}
+                classes={styles.SelectArrow}
+              >
+                <SelectValueText
+                  padding={"12px"}
+                  placeholder="Категория"
+                  className={styles.SelectLabel}
+                />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent
+                bg={"#F2F2F7"}
+                color={"#161719"}
+                padding={"10px"}
+                borderRadius={"8px"}
+              >
                 {frameworks.items.map((movie) => (
-                  <SelectItem item={movie} key={movie.value}>
+                  <SelectItem item={movie} key={movie.value} padding={"8px"}>
                     {movie.label}
                   </SelectItem>
                 ))}

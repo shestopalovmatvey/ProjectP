@@ -15,7 +15,7 @@ export const ProfileHeader = () => {
           size={"full"}
         />
       </div>
-      <span className={styles.UserName}>asfasfasfasf</span>
+      <span className={styles.UserName}>{userData?.username}</span>
     </header>
   );
 };

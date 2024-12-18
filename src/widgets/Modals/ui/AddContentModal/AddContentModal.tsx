@@ -64,7 +64,6 @@ export const AddContentModal: FC<AddContentModalProps> = ({
               onValueChange={(details) => console.log("details", details)}
             >
               <SelectTrigger
-                clearable
                 bg={"#F2F2F7"}
                 borderRadius={"8px"}
                 className={styles.Select}

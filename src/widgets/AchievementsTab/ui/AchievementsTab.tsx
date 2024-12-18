@@ -38,7 +38,7 @@ export const AchievementsTab = () => {
         {ACHIEVEMENTS.map((item) => (
           <div key={item.id} className={styles.Card}>
             <Image
-              rounded="md"
+              rounded="8px"
               src={item.image}
               alt={item.title}
               className={styles.Image}

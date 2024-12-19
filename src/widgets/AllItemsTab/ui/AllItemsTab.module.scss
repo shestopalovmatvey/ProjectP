@@ -1,0 +1,6 @@
+.Container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  padding: 15px;
+}

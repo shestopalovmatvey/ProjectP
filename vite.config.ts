@@ -3,9 +3,15 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
+import compression from "vite-plugin-compression";
 
 export default defineConfig({
-  plugins: [react(), svgr(), tsconfigPaths()],
+  plugins: [
+    react(),
+    svgr(),
+    tsconfigPaths(),
+    compression({ algorithm: "brotliCompress" }),
+  ],
   server: {
     watch: {
       usePolling: true,

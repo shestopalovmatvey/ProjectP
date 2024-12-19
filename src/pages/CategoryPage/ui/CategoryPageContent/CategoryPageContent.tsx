@@ -1,14 +1,33 @@
 import { Categories, CategoryTitles } from "@/helpers/enums";
+import { AllItemsTab } from "@/widgets/AllItemsTab";
 import { FoldersTab } from "@/widgets/FoldersTab";
 import { Tabs } from "@chakra-ui/react";
-import { useParams } from "react-router";
+import { useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router";
 
 export const CategoryPageContent = () => {
   const { category } = useParams<{ category: Categories }>();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleTabChange = (details: string) => {
+    if (details === "allItemsInCategory") {
+      navigate(`/${category}/allItems`);
+    } else if (details === "folders") {
+      navigate(`/${category}/folders`);
+    }
+  };
+
+  useEffect(() => {
+    if (location.pathname === `/${category}`) {
+      navigate(`/${category}/allItems`, { replace: true });
+    }
+  }, [category, location.pathname, navigate]);
 
   return (
     <Tabs.Root
       defaultValue="allItemsInCategory"
+      onValueChange={(details) => handleTabChange(details.value)}
       variant="plain"
       fitted
       css={{ fontFamily: "SF Pro Display" }}
@@ -43,7 +62,7 @@ export const CategoryPageContent = () => {
         <Tabs.Indicator borderRadius={"4px"} bg={"#24232D"} color={"#fff"} />
       </Tabs.List>
       <Tabs.Content value="allItemsInCategory">
-        {CategoryTitles[category as Categories]}
+        <AllItemsTab />
       </Tabs.Content>
       <Tabs.Content value="folders">
         <FoldersTab />

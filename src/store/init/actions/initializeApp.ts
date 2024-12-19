@@ -22,7 +22,7 @@ export const initializeApp = createAsyncThunk(
     window.Telegram.WebApp.setHeaderColor("#24232D");
     window.Telegram.WebApp.expand();
     window.Telegram.WebApp.isClosingConfirmationEnabled = true;
-    window.Telegram.WebApp.isClosingConfirmationEnabled = false;
+    window.Telegram.WebApp.isVerticalSwipesEnabled = false;
 
     return {
       id: user?.id,

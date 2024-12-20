@@ -9,7 +9,7 @@ export const ItemContentPage = () => {
   const { contentId } = useParams();
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-
+  // TODO:
   const handleInput = () => {
     const textarea = textareaRef.current;
     if (textarea) {

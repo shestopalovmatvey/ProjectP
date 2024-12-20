@@ -3,30 +3,35 @@ import { useParams } from "react-router";
 import styles from "./ItemContentPage.module.scss";
 import { Image } from "@chakra-ui/react";
 import { Textarea } from "@chakra-ui/react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export const ItemContentPage = () => {
   const { contentId } = useParams();
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  // TODO:
-  const handleInput = () => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      textarea.style.height = "auto";
-      textarea.style.height = `${textarea.scrollHeight}px`;
-    }
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      const stableHeight =
+        window.Telegram.WebApp.viewportStableHeight || window.innerHeight;
+      if (containerRef.current) {
+        containerRef.current.style.height = `${stableHeight}px`;
+      }
+    };
 
-  const handleFocus = () => {
-    textareaRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    });
-  };
+    window.Telegram.WebApp.onEvent("viewportChanged", handleResize);
+    handleResize();
+
+    return () => {
+      window.Telegram.WebApp.offEvent("viewportChanged", handleResize);
+    };
+  }, []);
 
   return (
-    <div className={styles.Container}>
+    <div
+      className={styles.Container}
+      ref={containerRef}
+      style={{ overflowY: "auto" }}
+    >
       <CategoryHeader isCardHeader />
       <Image
         className={styles.Image}
@@ -56,13 +61,16 @@ export const ItemContentPage = () => {
         <div className={styles["Details_Footer"]}>
           <h3 className={styles.Subtitle}>Заметки</h3>
           <Textarea
-            ref={textareaRef}
-            onInput={handleInput}
-            onFocus={handleFocus}
             placeholder="Добавить заметку"
             padding={"12px"}
             bg={"#242425"}
             resize="none"
+            onFocus={() => {
+              containerRef.current?.scrollTo({
+                top: containerRef.current.scrollHeight,
+                behavior: "smooth",
+              });
+            }}
           />
         </div>
       </div>

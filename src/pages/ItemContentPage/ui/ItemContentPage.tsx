@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 export const ItemContentPage = () => {
   const { contentId } = useParams();
   const containerRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,6 +26,15 @@ export const ItemContentPage = () => {
       window.Telegram.WebApp.offEvent("viewportChanged", handleResize);
     };
   }, []);
+
+  const handleFocus = () => {
+    if (textareaRef.current) {
+      textareaRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  };
 
   return (
     <div
@@ -65,12 +75,8 @@ export const ItemContentPage = () => {
             padding={"12px"}
             bg={"#242425"}
             resize="none"
-            onFocus={() => {
-              containerRef.current?.scrollTo({
-                top: containerRef.current.scrollHeight,
-                behavior: "smooth",
-              });
-            }}
+            ref={textareaRef}
+            onFocus={handleFocus}
           />
         </div>
       </div>

@@ -16,6 +16,10 @@ export const ItemContentPage = () => {
         window.Telegram.WebApp.viewportStableHeight || window.innerHeight;
       if (containerRef.current) {
         containerRef.current.style.height = `${stableHeight}px`;
+        textareaRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+        });
       }
     };
 

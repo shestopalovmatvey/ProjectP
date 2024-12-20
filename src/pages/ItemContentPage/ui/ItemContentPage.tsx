@@ -3,9 +3,28 @@ import { useParams } from "react-router";
 import styles from "./ItemContentPage.module.scss";
 import { Image } from "@chakra-ui/react";
 import { Textarea } from "@chakra-ui/react";
+import { useRef } from "react";
 
 export const ItemContentPage = () => {
   const { contentId } = useParams();
+
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleInput = () => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  };
+
+  const handleFocus = () => {
+    textareaRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  };
+
   return (
     <div className={styles.Container}>
       <CategoryHeader isCardHeader />
@@ -37,6 +56,9 @@ export const ItemContentPage = () => {
         <div className={styles["Details_Footer"]}>
           <h3 className={styles.Subtitle}>Заметки</h3>
           <Textarea
+            ref={textareaRef}
+            onInput={handleInput}
+            onFocus={handleFocus}
             placeholder="Добавить заметку"
             padding={"12px"}
             bg={"#242425"}

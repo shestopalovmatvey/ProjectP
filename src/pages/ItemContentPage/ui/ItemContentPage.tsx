@@ -12,15 +12,10 @@ export const ItemContentPage = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      const stableHeight =
-        window.Telegram.WebApp.viewportStableHeight || window.innerHeight;
-      if (containerRef.current) {
-        containerRef.current.style.height = `${stableHeight}px`;
-        textareaRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "end",
-        });
-      }
+      textareaRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
     };
 
     window.Telegram.WebApp.onEvent("viewportChanged", handleResize);

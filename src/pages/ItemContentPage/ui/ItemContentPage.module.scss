@@ -3,9 +3,12 @@
   flex-direction: column;
   height: 100%;
   background-color: #1c1c1c;
+  overflow-y: auto;
+  scrollbar-width: none;
 
   .Details {
     position: relative;
+    max-height: calc(100% - 285px);
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -16,9 +19,6 @@
     padding-inline: 20px;
     padding-top: 40px;
     z-index: 2;
-    overflow-y: auto;
-    scrollbar-width: none;
-    max-height: calc(100% - 235px);
 
     .Subtitle {
       font-family: "SF Pro Display";

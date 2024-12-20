@@ -1,0 +1,83 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #1c1c1c;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  .Details {
+    position: relative;
+    margin-top: -50px; /* Накладываем блок на изображение */
+    flex-shrink: 0;
+    background-color: #1c1c1c;
+    border-radius: 40px 40px 0px 0px;
+    padding-inline: 20px;
+    padding-top: 40px;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    max-height: calc(100% - 235px);
+
+    .Subtitle {
+      font-family: "SF Pro Display";
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 23.87px;
+    }
+
+    &_Header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .Title {
+        font-family: "SF Pro Display";
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 28.64px;
+      }
+
+      .Metadata {
+        font-family: "SF Pro Display";
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.09px;
+      }
+    }
+
+    &_Body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .Description {
+        font-family: "SF Pro Display";
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.09px;
+      }
+    }
+
+    &_Footer {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-bottom: 5vh;
+
+      textarea {
+        height: 102px;
+      }
+    }
+  }
+}
+
+.Image {
+  flex-shrink: 0;
+  width: 100%;
+  height: 285px;
+  object-fit: cover;
+}

@@ -2,11 +2,19 @@ import { Categories, CategoryTitles, ModalId } from "@/helpers/enums";
 import styles from "./CategoryHeader.module.scss";
 import IconBack from "@assets/images/back.svg?react";
 import IconSort from "@assets/images/sort.svg?react";
+import { FaRegStar } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router";
 import { useAppDispatch } from "@/helpers/hooks";
 import { commonActions } from "@/store/common";
+import { FC } from "react";
+import cls from "classnames";
 
-export const CategoryHeader = () => {
+interface CategoryHeaderProps {
+  isCardHeader?: boolean;
+}
+
+export const CategoryHeader: FC<CategoryHeaderProps> = ({ isCardHeader }) => {
   const { category } = useParams<{ category: Categories }>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -16,17 +24,34 @@ export const CategoryHeader = () => {
   };
 
   const onBack = () => {
-    navigate("/");
+    navigate(-1);
   };
   return (
-    <header className={styles["Category-header"]}>
+    <header
+      className={cls(styles["Category-header"], {
+        [styles["Category-header__fixed"]]: isCardHeader,
+      })}
+    >
       <IconBack width={24} height={24} onClick={onBack} />
-      <h2 className={styles["Category-header__title"]}>
-        {CategoryTitles[category as Categories] || "Категория"}
-      </h2>
-      <button onClick={onSortClick}>
-        <IconSort width={24} height={24} />
-      </button>
+      {isCardHeader ? (
+        <div className={styles.Icons}>
+          <button>
+            <FaRegStar width={30} height={30} />
+          </button>
+          <button>
+            <FaRegTrashAlt width={24} height={24} />
+          </button>
+        </div>
+      ) : (
+        <>
+          <h2 className={styles["Category-header__title"]}>
+            {CategoryTitles[category as Categories] || "Категория"}
+          </h2>
+          <button onClick={onSortClick}>
+            <IconSort width={24} height={24} />
+          </button>{" "}
+        </>
+      )}
     </header>
   );
 };

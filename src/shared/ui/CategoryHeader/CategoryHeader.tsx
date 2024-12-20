@@ -4,7 +4,7 @@ import IconBack from "@assets/images/back.svg?react";
 import IconSort from "@assets/images/sort.svg?react";
 import { FaRegStar } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
-import { useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import { useAppDispatch } from "@/helpers/hooks";
 import { commonActions } from "@/store/common";
 import { FC } from "react";
@@ -16,6 +16,7 @@ interface CategoryHeaderProps {
 
 export const CategoryHeader: FC<CategoryHeaderProps> = ({ isCardHeader }) => {
   const { category } = useParams<{ category: Categories }>();
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -24,7 +25,11 @@ export const CategoryHeader: FC<CategoryHeaderProps> = ({ isCardHeader }) => {
   };
 
   const onBack = () => {
-    navigate(-1);
+    if (location.pathname === `/${category}/folders`) {
+      navigate("/");
+    } else {
+      navigate(-1);
+    }
   };
   return (
     <header

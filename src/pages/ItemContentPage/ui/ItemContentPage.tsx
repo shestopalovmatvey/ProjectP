@@ -10,6 +10,7 @@ export const ItemContentPage = () => {
     <div className={styles.Container}>
       <CategoryHeader isCardHeader />
       <Image
+        className={styles.Image}
         objectFit={"fill"}
         width={"100%"}
         height="285px"

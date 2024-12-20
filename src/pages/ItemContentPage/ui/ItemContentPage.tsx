@@ -20,7 +20,6 @@ export const ItemContentPage = () => {
     };
 
     window.Telegram.WebApp.onEvent("viewportChanged", handleResize);
-    handleResize();
 
     return () => {
       window.Telegram.WebApp.offEvent("viewportChanged", handleResize);
